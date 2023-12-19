@@ -140,13 +140,15 @@ def main_function():
     
     whiff_sound = load_sound("whiff.wav")
     punch_sound = load_sound("punch.wav")
+    clap_sound=load_sound("claps.wav")
+    
     chimp = Chimp()
     fist = Fist()
     allsprites = pg.sprite.Group()
     allsprites.add(chimp)
     allsprites.add(fist)
     clock = pg.time.Clock()
-
+    flag=0
     going = True
     while going:
         clock.tick(60)
@@ -179,7 +181,9 @@ def main_function():
                     score=score-10
             elif event.type == pg.MOUSEBUTTONUP:
                 fist.unpunch()
-            
+        if score>1000==0 and score != 0 and flag==0:
+            clap_sound.play() 
+            flag=1   
         allsprites.update()
         # print(f"Fist position: {fist.rect.topleft}")
         # print(f"Chimp position: {chimp.rect.topleft}")
